@@ -10,3 +10,6 @@ This is a remote power controller for Raspberry Pi 3 mode B.
 add this two lines before exit 0
 ##gpio mode 25 out 
 ##gpio write 25 1 
+### [optional]
+You can modify your /boot/config.txt file as config.txt.
+### have fun
