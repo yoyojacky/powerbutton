@@ -1,0 +1,4 @@
+device_tree=bcm2710-rpi-3-b.dtb
+dtoverlay=power-off,gpiopin=26
+dtoverlay=pi3-act-led,gpio=21
+dtparam=audio=on
