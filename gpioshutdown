@@ -5,12 +5,11 @@
 
 # Define pin number it is a GPIO number in wiringPi mode , for example, BCM 26 pin means GPIO.25 in wiringPi mode. here are using WiringPi name mode.
 TriggerPin=26
-ListenPin=24
+ListenPin=5
 
 #initialize the gpio pin.
 function setuppin(){
-        `echo ${TriggerPin} > /sys/class/gpio/export`
-        `echo ${ListenPin} > /sys/class/gpio/export`
+        `echo ${TriggerPin} > /sys/class/gpio/export
          cd /sys/class/gpio/gpio${TriggerPin}/
          `echo out > direction`
          `echo 1 > value`
@@ -21,16 +20,15 @@ function clear_setting(){
          `echo in > /sys/class/gpio/gpio${TriggerPin}/direction`
          `echo 0 > /sys/class/gpio/gpio${TriggerPin}/value`
          `echo ${TriggerPin} > /sys/class/gpio/unexport`
-         `echo ${ListenPin} > /sys/class/gpio/unexport`
 }
 
 #start service.
 setuppin
 
-#statments
-STATS=`gpio read ${ListenPin}`
+#Main loop to detect ListenPin's level, if high level will shut down the system.
 while true
 do
+   STATS=`gpio read ${ListenPin}`
    if [[ ${STATS} == 1 ]];then
       sudo sync
       clear_setting
