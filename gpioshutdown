@@ -9,7 +9,7 @@ ListenPin=5
 
 #initialize the gpio pin.
 function setuppin(){
-        `echo ${TriggerPin} > /sys/class/gpio/export
+        `echo ${TriggerPin} > /sys/class/gpio/export`
          cd /sys/class/gpio/gpio${TriggerPin}/
          `echo out > direction`
          `echo 1 > value`
