@@ -35,10 +35,13 @@
 shutdownPin=26
 
 #This ListenPin is connected to BCM Pin 24. if BCM pin 24 is waiting for the signal from MCU.
-ListenPin=24
+#But shell script are running by gpio read Pin, so must be mapped to wringPi naming system.
+# ListenPin=5 means wiringPi's gpio5 = BCM pin24.
+ListenPin=5
 
 #This RebootPin is connected to BCM Pin 16. it will trigger rebooting when it's High level.
-RebootPin=16
+# RebootPin=27 means wiringPi's gpio 27 = BCM pin16
+RebootPin=27
 
 #initialize the gpio pin.
 function shutdownPinSetup(){
