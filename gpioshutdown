@@ -39,10 +39,6 @@ shutdownPin=26
 # ListenPin=5 means wiringPi's gpio5 = BCM pin24.
 ListenPin=5
 
-#This RebootPin is connected to BCM Pin 16. it will trigger rebooting when it's High level.
-# RebootPin=27 means wiringPi's gpio 27 = BCM pin16
-RebootPin=27
-
 #initialize the gpio pin.
 function shutdownPinSetup(){
          `sh -c "echo ${shutdownPin} > /sys/class/gpio/export"`
@@ -64,15 +60,10 @@ shutdownPinSetup
 #Main loop to detect ListenPin's level, if high level will shut down the system.
 while true
 do
-   Reboot_STATS=`gpio read ${RebootPin}`
    Signal_STATS=`gpio read ${ListenPin}`
    if [[ ${Signal_STATS} == 1 ]];then 
       sudo sync
       clear_ShutdownPin_setting
       sudo shutdown -h now
-   fi
-   if [[ ${Reboot_STATS} == 1 ]];then 
-      sudo sync
-      sudo reboot
    fi
 done
