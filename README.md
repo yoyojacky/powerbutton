@@ -2,6 +2,7 @@
 This is a remote power controller for Raspberry Pi 3 mode B.
 # How to setup.
 ## apt-get install -y wiringPi
+## apt-get install -y git-core
 ## cd ~
 ## git clone https://github.com/yoyojacky/powerbutton.git 
 ## sudo mv ~/powerbutton/gpioshutdown /etc/init.d/
